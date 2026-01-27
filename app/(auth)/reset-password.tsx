@@ -5,28 +5,36 @@ import {
 	StyleSheet,
 	TextInput,
 	TouchableOpacity,
+	ScrollView,
 } from "react-native";
-
+import Ionicons from "@expo/vector-icons/Ionicons";
 import { Colors, defaultStyles } from "@/constants";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
 
-const SignIn = () => {
+const resetPassword = () => {
 	const insets = useSafeAreaInsets();
 	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
 	return (
 		<View
 			style={[
 				defaultStyles.container,
 				{
-					paddingTop: insets.top + 45,
+					paddingTop: insets.top + 30,
 				},
 			]}
 		>
 			<View>
+				<TouchableOpacity
+					style={styles.backContainer}
+					onPress={() => {
+						router.back();
+					}}
+				>
+					<Ionicons name="chevron-back" size={16} color={"black"} />
+				</TouchableOpacity>
 				<Text style={[defaultStyles.header, { marginBottom: 32 }]}>
-					Sign in
+					Forgot Password
 				</Text>
 				<TextInput
 					style={defaultStyles.input}
@@ -37,32 +45,15 @@ const SignIn = () => {
 					autoCapitalize="none"
 					onChangeText={setEmail}
 				/>
-				<TextInput
-					style={defaultStyles.input}
-					placeholder="Password"
-					placeholderTextColor={Colors.black}
-					secureTextEntry
-					value={password}
-					onChangeText={setPassword}
-				/>
+
 				<TouchableOpacity
-					style={[defaultStyles.button, { marginBottom: 22 }]}
+					onPress={() => {
+						router.push("/(auth)/reset-screen");
+					}}
+					style={[defaultStyles.button, { marginBottom: 30 }]}
 				>
 					<Text style={defaultStyles.buttonText}>continue</Text>
 				</TouchableOpacity>
-				<Link href={"/(auth)/sign-up"} style={{ marginBottom: 16 }}>
-					<Text style={styles.accountText}>
-						Dont't have an Account?{" "}
-						<Text style={styles.createText}>Create Account</Text>
-					</Text>
-				</Link>
-
-				<Link href={"/(auth)/reset-password"}>
-					<Text style={styles.accountText}>
-						forgot Password?{" "}
-						<Text style={styles.createText}>Reset</Text>
-					</Text>
-				</Link>
 			</View>
 		</View>
 	);
@@ -80,6 +71,15 @@ const styles = StyleSheet.create({
 		color: Colors.black,
 		fontWeight: "bold",
 	},
+	backContainer: {
+		width: 40,
+		height: 40,
+		backgroundColor: Colors.lowGrey,
+		justifyContent: "center",
+		alignItems: "center",
+		borderRadius: 50,
+		marginBottom: 20,
+	},
 });
 
-export default SignIn;
+export default resetPassword;
