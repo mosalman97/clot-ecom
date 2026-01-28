@@ -5,7 +5,7 @@ import { Redirect, router } from "expo-router";
 
 // create a component
 const Main = () => {
-	return <Redirect href={"/(auth)/sign-in"} />;
+	return <Redirect href={"/(tabs)/home"} />;
 };
 
 export default Main;

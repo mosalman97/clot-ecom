@@ -4,7 +4,6 @@ import { Colors } from "./colors";
 export const defaultStyles = StyleSheet.create({
 	container: {
 		flex: 1,
-		padding: 16,
 		backgroundColor: Colors.white,
 	},
 	header: {
@@ -31,5 +30,10 @@ export const defaultStyles = StyleSheet.create({
 		fontSize: 16,
 		color: Colors.white,
 		fontWeight: "500",
+	},
+	imageStyle: {
+		width: "100%",
+		height: "100%",
+		resizeMode: "contain",
 	},
 });

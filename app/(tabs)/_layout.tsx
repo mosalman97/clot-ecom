@@ -1,28 +1,78 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
+import { Tabs } from "expo-router";
+import React from "react";
+import { Image, ImageSourcePropType, View } from "react-native";
 
-import { HapticTab } from '@/components/haptic-tab';
-import { IconSymbol } from '@/components/ui/icon-symbol';
-import { Colors } from '@/constants/theme';
-import { useColorScheme } from '@/hooks/use-color-scheme';
+import { IconSymbol } from "@/components/ui/icon-symbol";
+import { Colors, Images } from "@/constants";
+
+const TabIcon = ({
+	source,
+	focused,
+}: {
+	source: ImageSourcePropType;
+	focused: boolean;
+}) => (
+	<View>
+		<Image source={source} tintColor={focused && Colors.primary} />
+	</View>
+);
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
-  return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-        tabBarButton: HapticTab,
-      }}>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
-        }}
-      />
-    </Tabs>
-  );
+	return (
+		<Tabs
+			initialRouteName="home"
+			screenOptions={{
+				tabBarShowLabel: false,
+				tabBarStyle: {
+					backgroundColor: Colors.white,
+				},
+			}}
+		>
+			<Tabs.Screen
+				name="home"
+				options={{
+					headerShown: false,
+					tabBarIcon: ({ focused }) => (
+						<TabIcon source={Images.icon_home} focused={focused} />
+					),
+				}}
+			/>
+			<Tabs.Screen
+				name="notifications"
+				options={{
+					headerShown: false,
+					tabBarIcon: ({ focused }) => (
+						<TabIcon
+							source={Images.icon_notifications}
+							focused={focused}
+						/>
+					),
+				}}
+			/>
+			<Tabs.Screen
+				name="orders"
+				options={{
+					headerShown: false,
+					tabBarIcon: ({ focused }) => (
+						<TabIcon
+							source={Images.icon_orders}
+							focused={focused}
+						/>
+					),
+				}}
+			/>
+			<Tabs.Screen
+				name="profile"
+				options={{
+					headerShown: false,
+					tabBarIcon: ({ focused }) => (
+						<TabIcon
+							source={Images.icon_profile}
+							focused={focused}
+						/>
+					),
+				}}
+			/>
+		</Tabs>
+	);
 }
