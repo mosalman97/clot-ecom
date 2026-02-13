@@ -1,11 +1,9 @@
 //import liraries
-import React, { Component } from "react";
-import { View, Text, StyleSheet } from "react-native";
-import { Redirect, router } from "expo-router";
+import { Redirect } from "expo-router";
+import React from "react";
 
-// create a component
 const Main = () => {
-	return <Redirect href={"/(tabs)/home"} />;
+	return <Redirect href={"/(root)/(tabs)/home"} />;
 };
 
 export default Main;

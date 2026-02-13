@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import {
-	View,
-	Text,
 	StyleSheet,
+	Text,
 	TextInput,
 	TouchableOpacity,
+	View,
 } from "react-native";
 
 import { Colors, defaultStyles } from "@/constants";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Link } from "expo-router";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 const SignIn = () => {
 	const insets = useSafeAreaInsets();
@@ -24,7 +24,7 @@ const SignIn = () => {
 				},
 			]}
 		>
-			<View>
+			<View style={{ paddingHorizontal: 27 }}>
 				<Text style={[defaultStyles.header, { marginBottom: 32 }]}>
 					Sign in
 				</Text>
@@ -50,16 +50,15 @@ const SignIn = () => {
 				>
 					<Text style={defaultStyles.buttonText}>continue</Text>
 				</TouchableOpacity>
-				<Link href={"/(auth)/sign-up"} style={{ marginBottom: 16 }}>
+				<Link href={"/(auth)/sign-up"} style={{ marginBottom: 12 }}>
 					<Text style={styles.accountText}>
 						Dont't have an Account?{" "}
 						<Text style={styles.createText}>Create Account</Text>
 					</Text>
 				</Link>
-
 				<Link href={"/(auth)/reset-password"}>
 					<Text style={styles.accountText}>
-						forgot Password?{" "}
+						Forgot Password?{" "}
 						<Text style={styles.createText}>Reset</Text>
 					</Text>
 				</Link>

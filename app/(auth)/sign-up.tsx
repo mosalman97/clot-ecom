@@ -1,18 +1,18 @@
+import { Colors, defaultStyles } from "@/constants";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import { router } from "expo-router";
 import React, { useState } from "react";
 import {
-	View,
-	Text,
-	StyleSheet,
-	TextInput,
-	TouchableOpacity,
 	KeyboardAvoidingView,
 	Platform,
 	ScrollView,
+	StyleSheet,
+	Text,
+	TextInput,
+	TouchableOpacity,
+	View,
 } from "react-native";
-import Ionicons from "@expo/vector-icons/Ionicons";
-import { Colors, defaultStyles } from "@/constants";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { Link, router } from "expo-router";
 
 const SignUp = () => {
 	const insets = useSafeAreaInsets();
@@ -38,7 +38,7 @@ const SignUp = () => {
 						},
 					]}
 				>
-					<View>
+					<View style={{ paddingHorizontal: 27 }}>
 						<TouchableOpacity
 							style={styles.backContainer}
 							onPress={() => {
