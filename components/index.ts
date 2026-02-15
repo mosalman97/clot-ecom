@@ -1,3 +1,6 @@
-import ProductCard from "./ProductCard";
+import { Button } from "./Button";
+import CategoryItem from "./products/CategoryItem";
+import ProductCard from "./products/ProductCard";
+import { ProductVariant } from "./products/ProductVariant";
 
-export { ProductCard };
+export { Button, CategoryItem, ProductCard, ProductVariant };

@@ -9,8 +9,10 @@ interface ProductCardProps {
 	productName: string;
 	discountPrice: number;
 	originalPrice: number;
+	currancy?: string;
 	onPress?: () => void;
 	onHeartPress?: () => void;
+	containerStyle?: {};
 }
 
 const ProductCard = ({
@@ -19,10 +21,15 @@ const ProductCard = ({
 	discountPrice,
 	originalPrice,
 	onPress,
+	currancy,
 	onHeartPress,
+	containerStyle,
 }: ProductCardProps) => {
 	return (
-		<TouchableOpacity style={styles.container} onPress={onPress}>
+		<TouchableOpacity
+			style={[styles.container, containerStyle]}
+			onPress={onPress}
+		>
 			<TouchableOpacity
 				style={styles.heartContainer}
 				onPress={onHeartPress}
@@ -63,7 +70,6 @@ const styles = StyleSheet.create({
 		height: 281,
 		backgroundColor: Colors.lowGrey,
 		borderRadius: 12,
-		marginTop: 20,
 		overflow: "hidden",
 	},
 	innerContainer: {

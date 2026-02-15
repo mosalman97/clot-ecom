@@ -1,9 +1,11 @@
 import { Colors, defaultStyles, Images } from "@/constants";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { Image } from "expo-image";
-import { Link } from "expo-router";
-import React, { useState } from "react";
+import { Link, router } from "expo-router";
+import React from "react";
 import {
+	FlatList,
+	SectionList,
 	StyleSheet,
 	Text,
 	TextInput,
@@ -12,22 +14,26 @@ import {
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
+import { ProductCard } from "@/components";
 import { products, shopCategories } from "@/dummy.local";
 
-const sections = [
-	{
-		title: "Categories",
-		data: shopCategories.slice(0, 5),
-		type: "categories",
-	},
+const DATA = [
 	{
 		title: "Top Selling",
-		data: products,
+		data: [{}],
+		products: products,
 		type: "products",
 	},
 	{
-		title: "New Arrivals",
-		data: products,
+		title: "New Trending",
+		data: [{}],
+		products: products,
+		type: "products",
+	},
+	{
+		title: "max",
+		data: [{}],
+		products: products,
 		type: "products",
 	},
 ];
@@ -39,18 +45,9 @@ interface categoryItem {
 }
 
 const Home = () => {
-	const [categories, setCategories] = useState<categoryItem[]>([]);
-
 	const insets = useSafeAreaInsets();
 	return (
-		<View
-			style={[
-				defaultStyles.container,
-				{
-					paddingTop: insets.top + 6,
-				},
-			]}
-		>
+		<View style={[defaultStyles.container, { paddingTop: insets.top + 6 }]}>
 			<View style={styles.header}>
 				<View style={styles.mainHeader}>
 					<View style={styles.image}>
@@ -68,6 +65,7 @@ const Home = () => {
 						/>
 					</TouchableOpacity>
 				</View>
+
 				<View style={styles.searchContainer}>
 					<Ionicons name="search" size={16} />
 					<TextInput
@@ -77,15 +75,16 @@ const Home = () => {
 					/>
 				</View>
 			</View>
+
 			<View style={styles.categoryContainer}>
 				<View style={styles.categoryHeader}>
 					<Text style={styles.categoriesText}>Categories</Text>
-					<Link href={"/(root)/category-screen"}>
+					<Link href={"/(root)/categoryList"}>
 						<Text style={styles.allText}>See All</Text>
 					</Link>
 				</View>
 				<View style={styles.categoryItems}>
-					{shopCategories.slice(0, 5).map((item, index) => (
+					{shopCategories.slice(0, 5).map((item) => (
 						<TouchableOpacity
 							style={styles.categoryItemContainer}
 							key={item.id}
@@ -94,9 +93,7 @@ const Home = () => {
 								<Image
 									style={[
 										defaultStyles.imageStyle,
-										{
-											resizeMode: "cover",
-										},
+										{ resizeMode: "cover" },
 									]}
 									source={{ uri: item.image }}
 								/>
@@ -107,6 +104,57 @@ const Home = () => {
 						</TouchableOpacity>
 					))}
 				</View>
+			</View>
+
+			<View style={{ flex: 1 }}>
+				<SectionList
+					sections={DATA}
+					keyExtractor={(item, index) => item.id + index}
+					showsVerticalScrollIndicator={false}
+					stickySectionHeadersEnabled
+					contentContainerStyle={{
+						paddingLeft: 24,
+					}}
+					renderSectionHeader={({ section }) => (
+						<View
+							style={[
+								styles.categoryHeader,
+								{
+									backgroundColor: Colors.white,
+									paddingRight: 24,
+								},
+							]}
+						>
+							<Text style={styles.categoriesText}>
+								{section.title}
+							</Text>
+							<Link href={"/(root)/categoryList"}>
+								<Text style={styles.allText}>See All</Text>
+							</Link>
+						</View>
+					)}
+					renderItem={({ section }) => (
+						<FlatList
+							data={section.products}
+							horizontal
+							showsHorizontalScrollIndicator={false}
+							keyExtractor={(item) => item.id}
+							contentContainerStyle={{ marginBottom: 24 }}
+							renderItem={({ item }) => (
+								<ProductCard
+									imageUrl={item.images[0]}
+									productName={item.name}
+									discountPrice={item.discountPrice}
+									originalPrice={item.price}
+									containerStyle={{ marginRight: 12 }}
+									onPress={() => {
+										router.push("/(root)/productDetail");
+									}}
+								/>
+							)}
+						/>
+					)}
+				/>
 			</View>
 		</View>
 	);
@@ -154,6 +202,7 @@ const styles = StyleSheet.create({
 	},
 	categoryContainer: {
 		paddingHorizontal: 24,
+		marginBottom: 24,
 	},
 	categoryHeader: {
 		flexDirection: "row",
