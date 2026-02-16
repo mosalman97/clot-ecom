@@ -44,27 +44,32 @@ export const products = [
 		maxQuantity: 5,
 		images: [
 			"https://cdn.shopify.com/s/files/1/0293/9277/files/10-06-25_S1_55_FNM041610_Bluecombo_ZSR_KJ_DJ_14-17-15_45950_PXF.jpg?v=1759859564&width=1000&height=1500&crop=center",
+			"https://cdn.shopify.com/s/files/1/0293/9277/files/10-06-25_S1_55_FNM041610_Bluecombo_ZSR_KJ_DJ_14-17-15_45950_PXF.jpg?v=1759859564&width=1000&height=1500&crop=center",
+			"https://cdn.shopify.com/s/files/1/0293/9277/files/10-06-25_S1_55_FNM041610_Bluecombo_ZSR_KJ_DJ_14-17-15_45950_PXF.jpg?v=1759859564&width=1000&height=1500&crop=center",
+			"https://cdn.shopify.com/s/files/1/0293/9277/files/10-06-25_S1_55_FNM041610_Bluecombo_ZSR_KJ_DJ_14-17-15_45950_PXF.jpg?v=1759859564&width=1000&height=1500&crop=center",
 		],
-		variants: [
-			{
-				size: "S",
-				color: "Green",
-				stock: 3,
-				image: "https://cdn.shopify.com/s/files/1/0293/9277/files/KS_S_Green.jpg",
-			},
-			{
-				size: "M",
-				color: "Green",
-				stock: 5,
-				image: "https://cdn.shopify.com/s/files/1/0293/9277/files/KS_M_Green.jpg",
-			},
-			{
-				size: "L",
-				color: "Green",
-				stock: 4,
-				image: "https://cdn.shopify.com/s/files/1/0293/9277/files/KS_L_Green.jpg",
-			},
-		],
+		variants: {
+			sizes: [
+				{ name: "m", value: "m", stock: 12 },
+				{ name: "l", value: "l", stock: 8 },
+				{ name: "s", value: "s", stock: 5 },
+				{ name: "xl", value: "xl", stock: 0 },
+			],
+			colors: [
+				{
+					name: "Orange",
+					value: "#FFA500",
+				},
+				{
+					name: "Red",
+					value: "#FF0000",
+				},
+				{
+					name: "Blue",
+					value: "#1E40AF",
+				},
+			],
+		},
 		shortDescription: "Slim-fit green shirt made with 100% cotton.",
 		fullDescription:
 			"Kingston slim-fit shirt crafted with high-quality cotton. Comfortable, breathable, and perfect for casual or semi-formal occasions. Care: Machine wash cold, tumble dry low. Fits true to size.",
@@ -92,26 +97,28 @@ export const products = [
 			"https://cdn.shopify.com/s/files/1/0293/9277/files/10-20-23Studio7_KF_DJ_11-58-14_37_GFN185AJ_VintageWash_20358_SG.jpg?v=1698684154&width=1000&height=1500&crop=center",
 			"https://cdn.shopify.com/s/files/1/0293/9277/files/10-20-23Studio7_KF_DJ_11-58-14_37_GFN185AJ_VintageWash_20358_SG_2.jpg?v=1698684155&width=1000&height=1500&crop=center",
 		],
-		variants: [
-			{
-				size: "30",
-				color: "Blue",
-				stock: 5,
-				image: "https://example.com/images/denim_30.jpg",
-			},
-			{
-				size: "32",
-				color: "Blue",
-				stock: 7,
-				image: "https://example.com/images/denim_32.jpg",
-			},
-			{
-				size: "34",
-				color: "Blue",
-				stock: 8,
-				image: "https://example.com/images/denim_34.jpg",
-			},
-		],
+		variants: {
+			sizes: [
+				{ name: "m", value: "m", stock: 12 },
+				{ name: "l", value: "l", stock: 8 },
+				{ name: "s", value: "s", stock: 5 },
+				{ name: "xl", value: "xl", stock: 0 },
+			],
+			colors: [
+				{
+					name: "Orange",
+					value: "#FFA500",
+				},
+				{
+					name: "Red",
+					value: "#FF0000",
+				},
+				{
+					name: "Blue",
+					value: "#1E40AF",
+				},
+			],
+		},
 		shortDescription: "Classic slim-fit denim jeans.",
 		fullDescription:
 			"Levi's slim-fit denim jeans with comfortable stretch. Ideal for casual wear or semi-formal outings. Care: Machine wash cold, do not bleach.",
@@ -138,21 +145,31 @@ export const products = [
 		images: [
 			"https://cdn.shopify.com/s/files/1/0293/9277/files/11-22-24_S7_9_ZDF01C440072_Black_KJ_DJ_09-32-05_46153_PXF.jpg?v=1732562291&width=1000&height=1500&crop=center",
 			"https://cdn.shopify.com/s/files/1/0293/9277/files/11-22-24_S7_9_ZDF01C440072_Black_KJ_DJ_09-32-05_46153_PXF_2.jpg?v=1732562292&width=1000&height=1500&crop=center",
+			"https://cdn.shopify.com/s/files/1/0293/9277/files/11-22-24_S7_9_ZDF01C440072_Black_KJ_DJ_09-32-05_46153_PXF_2.jpg?v=1732562292&width=1000&height=1500&crop=center",
+			"https://cdn.shopify.com/s/files/1/0293/9277/files/11-22-24_S7_9_ZDF01C440072_Black_KJ_DJ_09-32-05_46153_PXF_2.jpg?v=1732562292&width=1000&height=1500&crop=center",
 		],
-		variants: [
-			{
-				size: "M",
-				color: "Black",
-				stock: 2,
-				image: "https://example.com/images/jacket_M.jpg",
-			},
-			{
-				size: "L",
-				color: "Black",
-				stock: 3,
-				image: "https://example.com/images/jacket_L.jpg",
-			},
-		],
+		variants: {
+			sizes: [
+				{ name: "m", value: "m", stock: 12 },
+				{ name: "l", value: "l", stock: 8 },
+				{ name: "s", value: "s", stock: 5 },
+				{ name: "xl", value: "xl", stock: 0 },
+			],
+			colors: [
+				{
+					name: "Orange",
+					value: "#FFA500",
+				},
+				{
+					name: "Red",
+					value: "#FF0000",
+				},
+				{
+					name: "Blue",
+					value: "#1E40AF",
+				},
+			],
+		},
 		shortDescription: "Premium black leather jacket for men.",
 		fullDescription:
 			"H&M premium leather jacket, durable and stylish. Perfect for winter and casual outings. Care: Professional leather cleaning only.",
@@ -161,127 +178,26 @@ export const products = [
 		reviewCount: 0,
 		reviews: [],
 	},
+];
+
+export const sizes = [
+	{ name: "m", value: "m", stock: 12 },
+	{ name: "l", value: "l", stock: 8 },
+	{ name: "s", value: "s", stock: 5 },
+	{ name: "xl", value: "xl", stock: 0 },
+];
+
+export const colors = [
 	{
-		id: "p_004",
-		name: "Premium Leather Jacket",
-		brand: "H&M",
-		sku: "PLJ-2024-03",
-		category: ["jackets", "men", "outerwear"],
-		tags: ["leather", "black", "premium", "winter"],
-		price: 199.99,
-		discountPrice: 179.99,
-		currency: "USD",
-		taxInfo: "included",
-		shippingInfo: "Free shipping",
-		stock: 5,
-		minQuantity: 1,
-		maxQuantity: 2,
-		images: [
-			"https://cdn.shopify.com/s/files/1/0293/9277/files/11-22-24_S7_9_ZDF01C440072_Black_KJ_DJ_09-32-05_46153_PXF.jpg?v=1732562291&width=1000&height=1500&crop=center",
-			"https://cdn.shopify.com/s/files/1/0293/9277/files/11-22-24_S7_9_ZDF01C440072_Black_KJ_DJ_09-32-05_46153_PXF_2.jpg?v=1732562292&width=1000&height=1500&crop=center",
-		],
-		variants: [
-			{
-				size: "M",
-				color: "Black",
-				stock: 2,
-				image: "https://example.com/images/jacket_M.jpg",
-			},
-			{
-				size: "L",
-				color: "Black",
-				stock: 3,
-				image: "https://example.com/images/jacket_L.jpg",
-			},
-		],
-		shortDescription: "Premium black leather jacket for men.",
-		fullDescription:
-			"H&M premium leather jacket, durable and stylish. Perfect for winter and casual outings. Care: Professional leather cleaning only.",
-		actions: { canAddToCart: true, canWishlist: true, canShare: true },
-		rating: null,
-		reviewCount: 0,
-		reviews: [],
+		name: "Orange",
+		value: "#FFA500",
 	},
 	{
-		id: "p_006",
-		name: "Premium Leather Jacket",
-		brand: "H&M",
-		sku: "PLJ-2024-03",
-		category: ["jackets", "men", "outerwear"],
-		tags: ["leather", "black", "premium", "winter"],
-		price: 199.99,
-		discountPrice: 179.99,
-		currency: "USD",
-		taxInfo: "included",
-		shippingInfo: "Free shipping",
-		stock: 5,
-		minQuantity: 1,
-		maxQuantity: 2,
-		images: [
-			"https://cdn.shopify.com/s/files/1/0293/9277/files/11-22-24_S7_9_ZDF01C440072_Black_KJ_DJ_09-32-05_46153_PXF.jpg?v=1732562291&width=1000&height=1500&crop=center",
-			"https://cdn.shopify.com/s/files/1/0293/9277/files/11-22-24_S7_9_ZDF01C440072_Black_KJ_DJ_09-32-05_46153_PXF_2.jpg?v=1732562292&width=1000&height=1500&crop=center",
-		],
-		variants: [
-			{
-				size: "M",
-				color: "Black",
-				stock: 2,
-				image: "https://example.com/images/jacket_M.jpg",
-			},
-			{
-				size: "L",
-				color: "Black",
-				stock: 3,
-				image: "https://example.com/images/jacket_L.jpg",
-			},
-		],
-		shortDescription: "Premium black leather jacket for men.",
-		fullDescription:
-			"H&M premium leather jacket, durable and stylish. Perfect for winter and casual outings. Care: Professional leather cleaning only.",
-		actions: { canAddToCart: true, canWishlist: true, canShare: true },
-		rating: null,
-		reviewCount: 0,
-		reviews: [],
+		name: "Red",
+		value: "#FF0000",
 	},
 	{
-		id: "p_008",
-		name: "Premium Leather Jacket",
-		brand: "H&M",
-		sku: "PLJ-2024-03",
-		category: ["jackets", "men", "outerwear"],
-		tags: ["leather", "black", "premium", "winter"],
-		price: 199.99,
-		discountPrice: 179.99,
-		currency: "USD",
-		taxInfo: "included",
-		shippingInfo: "Free shipping",
-		stock: 5,
-		minQuantity: 1,
-		maxQuantity: 2,
-		images: [
-			"https://cdn.shopify.com/s/files/1/0293/9277/files/11-22-24_S7_9_ZDF01C440072_Black_KJ_DJ_09-32-05_46153_PXF.jpg?v=1732562291&width=1000&height=1500&crop=center",
-			"https://cdn.shopify.com/s/files/1/0293/9277/files/11-22-24_S7_9_ZDF01C440072_Black_KJ_DJ_09-32-05_46153_PXF_2.jpg?v=1732562292&width=1000&height=1500&crop=center",
-		],
-		variants: [
-			{
-				size: "M",
-				color: "Black",
-				stock: 2,
-				image: "https://example.com/images/jacket_M.jpg",
-			},
-			{
-				size: "L",
-				color: "Black",
-				stock: 3,
-				image: "https://example.com/images/jacket_L.jpg",
-			},
-		],
-		shortDescription: "Premium black leather jacket for men.",
-		fullDescription:
-			"H&M premium leather jacket, durable and stylish. Perfect for winter and casual outings. Care: Professional leather cleaning only.",
-		actions: { canAddToCart: true, canWishlist: true, canShare: true },
-		rating: null,
-		reviewCount: 0,
-		reviews: [],
+		name: "Blue",
+		value: "#1E40AF",
 	},
 ];

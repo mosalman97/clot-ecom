@@ -1,32 +1,24 @@
 import { Colors, defaultStyles } from "@/constants";
+import { ProductCardProps } from "@/types/product";
 import { formatCurrency } from "@/utils";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import React from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-interface ProductCardProps {
-	imageUrl: string;
-	productName: string;
-	discountPrice: number;
-	originalPrice: number;
-	currancy?: string;
-	onPress?: () => void;
-	onHeartPress?: () => void;
-	containerStyle?: {};
-}
-
-const ProductCard = ({
-	imageUrl,
-	productName,
-	discountPrice,
+let ProductCardComponent = ({
+	id,
+	name,
+	image,
+	discountedPrice,
 	originalPrice,
-	onPress,
 	currancy,
+	onPress,
 	onHeartPress,
 	containerStyle,
 }: ProductCardProps) => {
 	return (
 		<TouchableOpacity
+			key={id}
 			style={[styles.container, containerStyle]}
 			onPress={onPress}
 		>
@@ -39,7 +31,7 @@ const ProductCard = ({
 			<View style={styles.innerContainer}>
 				<Image
 					source={{
-						uri: imageUrl,
+						uri: image,
 					}}
 					style={[
 						defaultStyles.imageStyle,
@@ -50,19 +42,23 @@ const ProductCard = ({
 				/>
 			</View>
 			<View style={styles.textContainer}>
-				<Text style={styles.productName}>{productName}</Text>
+				<Text style={styles.productName}>{name}</Text>
 				<View style={styles.priceView}>
 					<Text style={styles.discountPrice}>
-						{formatCurrency(discountPrice, "USD")}
+						{discountedPrice &&
+							formatCurrency(discountedPrice, currancy ?? "USD")}
 					</Text>
 					<Text style={styles.originalPrice}>
-						{formatCurrency(originalPrice, "USD")}
+						{originalPrice &&
+							formatCurrency(originalPrice, currancy ?? "USD")}
 					</Text>
 				</View>
 			</View>
 		</TouchableOpacity>
 	);
 };
+
+export const ProductCard = React.memo(ProductCardComponent);
 
 const styles = StyleSheet.create({
 	container: {

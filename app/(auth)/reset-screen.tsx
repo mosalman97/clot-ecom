@@ -1,8 +1,7 @@
-import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
-import { defaultStyles, Colors } from "@/constants";
-import { Image } from "expo-image";
+import { defaultStyles } from "@/constants";
 import { router } from "expo-router";
+import React from "react";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 const resetScreen = () => {
 	return (

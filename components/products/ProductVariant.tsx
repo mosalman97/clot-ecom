@@ -2,8 +2,7 @@ import { Colors } from "@/constants";
 import { Ionicons } from "@expo/vector-icons";
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-
-type VariantType = "quantity" | "size" | "color";
+import { VariantType } from "../../types/product";
 
 interface ProductVariantProps {
 	type: VariantType;
@@ -14,10 +13,10 @@ interface ProductVariantProps {
 	onPressSelect?: () => void;
 }
 
-export const ProductVariant: React.FC<ProductVariantProps> = ({
+let ProductVariantComponent: React.FC<ProductVariantProps> = ({
 	type,
 	value,
-	colorValue = Colors.primary,
+	colorValue,
 	onIncrease,
 	onDecrease,
 	onPressSelect,
@@ -50,9 +49,9 @@ export const ProductVariant: React.FC<ProductVariantProps> = ({
 				<View style={styles.row}>
 					<Text style={styles.valueText}>{value}</Text>
 
-					<TouchableOpacity onPress={onPressSelect}>
+					<View>
 						<Ionicons name="chevron-down" size={20} color="#000" />
-					</TouchableOpacity>
+					</View>
 				</View>
 			);
 		}
@@ -67,9 +66,9 @@ export const ProductVariant: React.FC<ProductVariantProps> = ({
 						]}
 					/>
 
-					<TouchableOpacity onPress={onPressSelect}>
+					<View>
 						<Ionicons name="chevron-down" size={20} color="#000" />
-					</TouchableOpacity>
+					</View>
 				</View>
 			);
 		}
@@ -78,15 +77,20 @@ export const ProductVariant: React.FC<ProductVariantProps> = ({
 	};
 
 	return (
-		<View style={styles.container}>
+		<TouchableOpacity
+			style={styles.container}
+			onPress={onPressSelect}
+			disabled={type === "quantity"}
+		>
 			<Text style={styles.label}>
 				{type.charAt(0).toUpperCase() + type.slice(1)}
 			</Text>
-
 			{renderRightContent()}
-		</View>
+		</TouchableOpacity>
 	);
 };
+
+export const ProductVariant = React.memo(ProductVariantComponent);
 
 const styles = StyleSheet.create({
 	container: {
@@ -125,6 +129,7 @@ const styles = StyleSheet.create({
 		fontSize: 16,
 		fontWeight: "bold",
 		marginRight: 16,
+		textTransform: "capitalize",
 	},
 	colorBox: {
 		width: 16,

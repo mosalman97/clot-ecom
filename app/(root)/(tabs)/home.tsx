@@ -1,10 +1,10 @@
 import { Colors, defaultStyles, Images } from "@/constants";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { Image } from "expo-image";
 import { Link, router } from "expo-router";
 import React from "react";
 import {
 	FlatList,
+	Image,
 	SectionList,
 	StyleSheet,
 	Text,
@@ -19,18 +19,21 @@ import { products, shopCategories } from "@/dummy.local";
 
 const DATA = [
 	{
+		id: 1,
 		title: "Top Selling",
 		data: [{}],
 		products: products,
 		type: "products",
 	},
 	{
+		id: 2,
 		title: "New Trending",
 		data: [{}],
 		products: products,
 		type: "products",
 	},
 	{
+		id: 3,
 		title: "max",
 		data: [{}],
 		products: products,
@@ -61,7 +64,7 @@ const Home = () => {
 						<Image
 							source={Images.icon_wish}
 							style={styles.wishIcon}
-							contentFit="contain"
+							resizeMode="contain"
 						/>
 					</TouchableOpacity>
 				</View>
@@ -84,7 +87,7 @@ const Home = () => {
 					</Link>
 				</View>
 				<View style={styles.categoryItems}>
-					{shopCategories.slice(0, 5).map((item) => (
+					{shopCategories.slice(0, 5).map((item: categoryItem) => (
 						<TouchableOpacity
 							style={styles.categoryItemContainer}
 							key={item.id}
@@ -109,7 +112,7 @@ const Home = () => {
 			<View style={{ flex: 1 }}>
 				<SectionList
 					sections={DATA}
-					keyExtractor={(item, index) => item.id + index}
+					keyExtractor={(item, index) => item.id ?? index.toString()}
 					showsVerticalScrollIndicator={false}
 					stickySectionHeadersEnabled
 					contentContainerStyle={{
@@ -138,17 +141,25 @@ const Home = () => {
 							data={section.products}
 							horizontal
 							showsHorizontalScrollIndicator={false}
-							keyExtractor={(item) => item.id}
+							keyExtractor={(item) => String(item.id)}
 							contentContainerStyle={{ marginBottom: 24 }}
 							renderItem={({ item }) => (
 								<ProductCard
-									imageUrl={item.images[0]}
-									productName={item.name}
-									discountPrice={item.discountPrice}
+									id={item.id}
+									image={item.images[0]}
+									name={item.name}
+									discountedPrice={item.discountPrice}
 									originalPrice={item.price}
+									currancy={item.currency}
 									containerStyle={{ marginRight: 12 }}
 									onPress={() => {
-										router.push("/(root)/productDetail");
+										router.push({
+											pathname: "/(root)/productDetail",
+											params: {
+												productDetail:
+													JSON.stringify(item),
+											},
+										});
 									}}
 								/>
 							)}

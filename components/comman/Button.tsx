@@ -1,6 +1,7 @@
 import { Colors } from "@/constants";
 import React from "react";
 import {
+	ActivityIndicator,
 	GestureResponderEvent,
 	StyleSheet,
 	Text,
@@ -14,22 +15,27 @@ type ButtonProps = {
 	leftText?: string;
 	rightText?: string;
 	onPress: (event: GestureResponderEvent) => void;
+	isLoading?: boolean;
 };
 
-export const Button: React.FC<ButtonProps> = ({
+let ButtonComponent: React.FC<ButtonProps> = ({
 	type = "center",
 	centerText,
 	leftText,
 	rightText,
 	onPress,
+	isLoading = false,
 }) => {
 	return (
 		<TouchableOpacity
-			style={styles.button}
+			style={[styles.button, isLoading && styles.disabled]}
 			activeOpacity={0.8}
 			onPress={onPress}
+			disabled={isLoading}
 		>
-			{type === "center" ? (
+			{isLoading ? (
+				<ActivityIndicator color={Colors.white} />
+			) : type === "center" ? (
 				<Text style={styles.centerText}>{centerText}</Text>
 			) : (
 				<View style={styles.row}>
@@ -41,6 +47,8 @@ export const Button: React.FC<ButtonProps> = ({
 	);
 };
 
+export const Button = ButtonComponent;
+
 const styles = StyleSheet.create({
 	button: {
 		width: "100%",
@@ -50,6 +58,9 @@ const styles = StyleSheet.create({
 		paddingHorizontal: 24,
 		justifyContent: "center",
 	},
+	disabled: {
+		opacity: 0.6,
+	},
 	row: {
 		flexDirection: "row",
 		justifyContent: "space-between",
@@ -58,17 +69,17 @@ const styles = StyleSheet.create({
 	centerText: {
 		fontSize: 16,
 		fontWeight: "400",
-		color: "#FFFFFF",
+		color: Colors.white,
 		textAlign: "center",
 	},
 	leftText: {
 		fontSize: 16,
 		fontWeight: "bold",
-		color: "#FFFFFF",
+		color: Colors.white,
 	},
 	rightText: {
 		fontSize: 16,
 		fontWeight: "400",
-		color: "#FFFFFF",
+		color: Colors.white,
 	},
 });

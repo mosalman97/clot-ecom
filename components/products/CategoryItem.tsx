@@ -13,7 +13,7 @@ interface CategoryItemProps {
 	item: ShopCategory;
 }
 
-const CategoryItem: React.FC<CategoryItemProps> = ({ item }) => {
+let CategoryItemComponent: React.FC<CategoryItemProps> = ({ item }) => {
 	const router = useRouter();
 
 	const handlePress = () => {
@@ -36,7 +36,7 @@ const CategoryItem: React.FC<CategoryItemProps> = ({ item }) => {
 	);
 };
 
-export default CategoryItem;
+export const CategoryItem = React.memo(CategoryItemComponent);
 
 const styles = StyleSheet.create({
 	listItem: {
